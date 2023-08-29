@@ -3,7 +3,7 @@ db.createCollection("tipo_documento",{
     validator:{
         $jsonSchema:{
             bsonType:"object",
-            required:["_id","tipodoc_id", "dipodoc_nombre","tipodoc_abreviatura"],
+            required:["_id","tipdoc_id", "tipdoc_nombre","tipdoc_abreviatura"],
             properties:{
                 _id:{
                     bsonType:'number',
@@ -277,3 +277,376 @@ db.createCollection("consultorio",{
         }
     }
 })
+
+
+
+// Insert data
+use("db_citas_medicas");
+db.tipo_documento.insertMany(
+    [
+        {
+          _id: 1,
+          tipdoc_id: 101,
+          tipdoc_nombre: "Cédula de Identidad",
+          tipdoc_abreviatura: "C.C."
+        },
+        {
+          _id: 2,
+          tipdoc_id: 102,
+          tipdoc_nombre: "Pasaporte",
+          tipdoc_abreviatura: "Pasap."
+        },
+        {
+          _id: 3,
+          tipdoc_id: 103,
+          tipdoc_nombre: "Tarjeta de Identificación",
+          tipdoc_abreviatura: "T.I."
+        },
+        {
+          _id: 4,
+          tipdoc_id: 104,
+          tipdoc_nombre: "Licencia de Conducir",
+          tipdoc_abreviatura: "Lic. Cond."
+        },
+        {
+          _id: 5,
+          tipdoc_id: 105,
+          tipdoc_nombre: "Carné Estudiantil",
+          tipdoc_abreviatura: "Carné Est."
+        }
+      
+      
+])
+
+use("db_citas_medicas");
+db.genero.insertMany([
+    
+        {
+          _id: 1,
+          gen_id: 201,
+          gen_nombre: "Masculino",
+          gen_abreviatura: "M"
+        },
+        {
+          _id: 2,
+          gen_id: 202,
+          gen_nombre: "Femenino",
+          gen_abreviatura: "F"
+        },
+        {
+          _id: 3,
+          gen_id: 203,
+          gen_nombre: "No Binario",
+          gen_abreviatura: "NB"
+        },
+        {
+          _id: 4,
+          gen_id: 204,
+          gen_nombre: "Prefiero no decirlo",
+          gen_abreviatura: "PNDS"
+        },
+        {
+          _id: 5,
+          gen_id: 205,
+          gen_nombre: "Otro",
+          gen_abreviatura: "Otro"
+        }
+      
+      
+])
+
+use("db_citas_medicas");
+db.usuario.insertMany([{
+    _id: 1,
+    usu_id: 1001,
+    usu_nombre: "Juan",
+    usu_segdo_nombre: "Pablo",
+    usu_primer_apaellido_usuar: "García",
+    usu_segdo_apellido_usuar: "López",
+    usu_telefono: 123456789,
+    usu_direccion: "Calle 123, Ciudad",
+    usu_email: "juan@example.com",
+    usu_tipodoc: 101,
+    usu_genero: 201,
+    usu_acudiente: 501
+  },
+  {
+    _id: 2,
+    usu_id: 1002,
+    usu_nombre: "María",
+    usu_segdo_nombre: "Isabel",
+    usu_primer_apaellido_usuar: "Martínez",
+    usu_segdo_apellido_usuar: "Gómez",
+    usu_telefono: 987654321,
+    usu_direccion: "Avenida XYZ, Ciudad",
+    usu_email: "maria@example.com",
+    usu_tipodoc: 102,
+    usu_genero: 202,
+    usu_acudiente: 502
+  },
+  {
+    _id: 3,
+    usu_id: 1003,
+    usu_nombre: "Alejandro",
+    usu_segdo_nombre: "Andrés",
+    usu_primer_apaellido_usuar: "Pérez",
+    usu_segdo_apellido_usuar: "Ramírez",
+    usu_telefono: 555555555,
+    usu_direccion: "Plaza Principal, Ciudad",
+    usu_email: "alejandro@example.com",
+    usu_tipodoc: 103,
+    usu_genero: 203,
+    usu_acudiente: 503
+  },
+  {
+    _id: 4,
+    usu_id: 1004,
+    usu_nombre: "Ana",
+    usu_segdo_nombre: "Lucía",
+    usu_primer_apaellido_usuar: "Gómez",
+    usu_segdo_apellido_usuar: "López",
+    usu_telefono: 777777777,
+    usu_direccion: "Calle Principal, Ciudad",
+    usu_email: "ana@example.com",
+    usu_tipodoc: 104,
+    usu_genero: 204,
+    usu_acudiente: 504
+  },
+  {
+    _id: 5,
+    usu_id: 1005,
+    usu_nombre: "Andrea",
+    usu_segdo_nombre: "Fernanda",
+    usu_primer_apaellido_usuar: "Sánchez",
+    usu_segdo_apellido_usuar: "Pérez",
+    usu_telefono: 333333333,
+    usu_direccion: "Carrera 456, Ciudad",
+    usu_email: "andrea@example.com",
+    usu_tipodoc: 105,
+    usu_genero: 205,
+    usu_acudiente: 505
+  }])
+
+
+  use("db_citas_medicas");
+  db.acudiente.insertMany([
+    {
+      _id: 1,
+      acu_codigo: 501,
+      acu_nombreCompleto: "María Rodríguez",
+      acu_telefono: 987654321,
+      acu_direccion: "Avenida ABC, Ciudad"
+    },
+    {
+      _id: 2,
+      acu_codigo: 502,
+      acu_nombreCompleto: "Carlos Pérez",
+      acu_telefono: 111111111,
+      acu_direccion: "Calle 789, Ciudad"
+    },
+    {
+      _id: 3,
+      acu_codigo: 503,
+      acu_nombreCompleto: "Laura Gómez",
+      acu_telefono: 222222222,
+      acu_direccion: "Plaza Central, Ciudad"
+    },
+    {
+      _id: 4,
+      acu_codigo: 504,
+      acu_nombreCompleto: "Jorge López",
+      acu_telefono: 444444444,
+      acu_direccion: "Calle Principal, Ciudad"
+    },
+    {
+      _id: 5,
+      acu_codigo: 505,
+      acu_nombreCompleto: "Isabel Pérez",
+      acu_telefono: 555555555,
+      acu_direccion: "Avenida XYZ, Ciudad"
+    }
+  ]
+  )
+
+
+  use("db_citas_medicas");
+db.cita.insertMany([
+    {
+      _id: 1,
+      cit_codigo: 2001,
+      cit_fecha: ISODate("2023-08-28T10:00:00Z"),
+      cit_estadoCita: 301,
+      cit_medico: 401,
+      cit_datosUsuario: 1001
+    },
+    {
+      _id: 2,
+      cit_codigo: 2002,
+      cit_fecha: ISODate("2023-09-15T14:30:00Z"),
+      cit_estadoCita: 302,
+      cit_medico: 402,
+      cit_datosUsuario: 1002
+    },
+    {
+      _id: 3,
+      cit_codigo: 2003,
+      cit_fecha: ISODate("2023-10-05T11:15:00Z"),
+      cit_estadoCita: 301,
+      cit_medico: 401,
+      cit_datosUsuario: 1003
+    },
+    {
+      _id: 4,
+      cit_codigo: 2004,
+      cit_fecha: ISODate("2023-10-15T09:00:00Z"),
+      cit_estadoCita: 303,
+      cit_medico: 403,
+      cit_datosUsuario: 1004
+    },
+    {
+      _id: 5,
+      cit_codigo: 2005,
+      cit_fecha: ISODate("2023-11-02T16:45:00Z"),
+      cit_estadoCita: 301,
+      cit_medico: 401,
+      cit_datosUsuario: 1005
+    }
+  ]
+  )
+
+
+  use("db_citas_medicas");
+db.estado_cita.insertMany([
+    {
+      _id: 1,
+      estcita_id: 301,
+      estcita_nombre: "Programada"
+    },
+    {
+      _id: 2,
+      estcita_id: 302,
+      estcita_nombre: "Confirmada"
+    },
+    {
+      _id: 3,
+      estcita_id: 303,
+      estcita_nombre: "Cancelada"
+    },
+    {
+      _id: 4,
+      estcita_id: 304,
+      estcita_nombre: "Completada"
+    },
+    {
+      _id: 5,
+      estcita_id: 305,
+      estcita_nombre: "Pendiente"
+    }
+  ]
+  )
+
+
+  use("db_citas_medicas");
+db.medico.insertMany([
+    {
+      _id: 1,
+      med_nroMatriculaProsional: 401,
+      med_nombreCompleto: "Dr. Ana Martínez",
+      med_consultorio: 601,
+      med_especialidad: 701
+    },
+    {
+      _id: 2,
+      med_nroMatriculaProsional: 402,
+      med_nombreCompleto: "Dr. Carlos López",
+      med_consultorio: 602,
+      med_especialidad: 702
+    },
+    {
+      _id: 3,
+      med_nroMatriculaProsional: 403,
+      med_nombreCompleto: "Dra. Laura Gómez",
+      med_consultorio: 603,
+      med_especialidad: 703
+    },
+    {
+      _id: 4,
+      med_nroMatriculaProsional: 404,
+      med_nombreCompleto: "Dra. Juan Pérez",
+      med_consultorio: 604,
+      med_especialidad: 702
+    },
+    {
+      _id: 5,
+      med_nroMatriculaProsional: 405,
+      med_nombreCompleto: "Dr. Andrea Ramírez",
+      med_consultorio: 605,
+      med_especialidad: 701
+    }
+  ]
+  )
+
+
+  use("db_citas_medicas");
+db.especialidad.insertMany(
+    [
+        {
+          _id: 1,
+          esp_id: 701,
+          esp_nombre: "Pediatría"
+        },
+        {
+          _id: 2,
+          esp_id: 702,
+          esp_nombre: "Dermatología"
+        },
+        {
+          _id: 3,
+          esp_id: 703,
+          esp_nombre: "Cardiología"
+        },
+        {
+          _id: 4,
+          esp_id: 704,
+          esp_nombre: "Ginecología"
+        },
+        {
+          _id: 5,
+          esp_id: 705,
+          esp_nombre: "Oftalmología"
+        }
+      ]
+      
+)
+
+
+use("db_citas_medicas");
+db.consultorio.insertMany([
+    {
+      _id: 1,
+      cons_codigo: 601,
+      cons_nombre: "Consultorio 1"
+    },
+    {
+      _id: 2,
+      cons_codigo: 602,
+      cons_nombre: "Consultorio 2"
+    },
+    {
+      _id: 3,
+      cons_codigo: 603,
+      cons_nombre: "Consultorio 3"
+    },
+    {
+      _id: 4,
+      cons_codigo: 604,
+      cons_nombre: "Consultorio 4"
+    },
+    {
+      _id: 5,
+      cons_codigo: 605,
+      cons_nombre: "Consultorio 5"
+    }
+  ]
+  )
+
