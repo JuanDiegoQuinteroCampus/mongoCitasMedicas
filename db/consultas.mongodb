@@ -1,0 +1,15 @@
+// Obtener todos los pacientes alfabéticamente
+use("db_citas_medicas");
+db.usuario.find({}).sort({ usu_nombre: 1, usu_segdo_nombre:1,usu_primer_apaellido_usuar:1, usu_segdo_apellido_usuar:1  })
+
+// Obtener todas las citas alfabéticamente
+use("db_citas_medicas");
+db.cita.find().sort({ "cit_fecha": 1 });
+
+
+// Obtener todos los médicos de una especialidad específica (por ejemplo, 'Cardiología'):
+use("db_citas_medicas");
+db.especialidad.find({esp_nombre: 'Cardiología'})
+
+// Encontrar la próxima cita para un paciente específico (por ejemplo, el paciente con usu_id 1):
+use("db_citas_medicas");
